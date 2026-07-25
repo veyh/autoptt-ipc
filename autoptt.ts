@@ -680,7 +680,8 @@ export interface Key {
 export interface KeyPushToTalk {
   pttId: number;
   key: HotkeyV3 | undefined;
-  displayName: string;
+  overlayDisplayName: string;
+  overlaySortPriority: number;
 }
 
 export interface KeyPushToMute {
@@ -3882,7 +3883,7 @@ export const Key: MessageFns<Key> = {
 };
 
 function createBaseKeyPushToTalk(): KeyPushToTalk {
-  return { pttId: 0, key: undefined, displayName: "" };
+  return { pttId: 0, key: undefined, overlayDisplayName: "", overlaySortPriority: 0 };
 }
 
 export const KeyPushToTalk: MessageFns<KeyPushToTalk> = {
@@ -3893,8 +3894,11 @@ export const KeyPushToTalk: MessageFns<KeyPushToTalk> = {
     if (message.key !== undefined) {
       HotkeyV3.encode(message.key, writer.uint32(18).fork()).join();
     }
-    if (message.displayName !== "") {
-      writer.uint32(26).string(message.displayName);
+    if (message.overlayDisplayName !== "") {
+      writer.uint32(26).string(message.overlayDisplayName);
+    }
+    if (message.overlaySortPriority !== 0) {
+      writer.uint32(32).int64(message.overlaySortPriority);
     }
     return writer;
   },
@@ -3927,7 +3931,15 @@ export const KeyPushToTalk: MessageFns<KeyPushToTalk> = {
             break;
           }
 
-          message.displayName = reader.string();
+          message.overlayDisplayName = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.overlaySortPriority = longToNumber(reader.int64());
           continue;
         }
       }
@@ -3943,7 +3955,8 @@ export const KeyPushToTalk: MessageFns<KeyPushToTalk> = {
     return {
       pttId: isSet(object.pttId) ? globalThis.Number(object.pttId) : 0,
       key: isSet(object.key) ? HotkeyV3.fromJSON(object.key) : undefined,
-      displayName: isSet(object.displayName) ? globalThis.String(object.displayName) : "",
+      overlayDisplayName: isSet(object.overlayDisplayName) ? globalThis.String(object.overlayDisplayName) : "",
+      overlaySortPriority: isSet(object.overlaySortPriority) ? globalThis.Number(object.overlaySortPriority) : 0,
     };
   },
 
@@ -3955,8 +3968,11 @@ export const KeyPushToTalk: MessageFns<KeyPushToTalk> = {
     if (message.key !== undefined) {
       obj.key = HotkeyV3.toJSON(message.key);
     }
-    if (message.displayName !== "") {
-      obj.displayName = message.displayName;
+    if (message.overlayDisplayName !== "") {
+      obj.overlayDisplayName = message.overlayDisplayName;
+    }
+    if (message.overlaySortPriority !== 0) {
+      obj.overlaySortPriority = Math.round(message.overlaySortPriority);
     }
     return obj;
   },
@@ -3968,7 +3984,8 @@ export const KeyPushToTalk: MessageFns<KeyPushToTalk> = {
     const message = createBaseKeyPushToTalk();
     message.pttId = object.pttId ?? 0;
     message.key = (object.key !== undefined && object.key !== null) ? HotkeyV3.fromPartial(object.key) : undefined;
-    message.displayName = object.displayName ?? "";
+    message.overlayDisplayName = object.overlayDisplayName ?? "";
+    message.overlaySortPriority = object.overlaySortPriority ?? 0;
     return message;
   },
 };
