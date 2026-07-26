@@ -594,17 +594,17 @@ export interface ProfileSettings {
   afkAutoMuteAfkThresholdMs: number;
   afkAutoMuteAfkDetectionMethod: AfkDetectionMethod;
   keys: Key[];
-  keyGroups: HotkeyGroup[];
-  keyPushToMuteGlobal: HotkeyV3 | undefined;
-  keySetModeToVoiceActivity: HotkeyV3 | undefined;
-  keySetModeToTap: HotkeyV3 | undefined;
-  keySetModeToManual: HotkeyV3 | undefined;
-  keySetModeToTapOpenMicToPtt: HotkeyV3 | undefined;
-  keySetModeToManualOpenMicToPtt: HotkeyV3 | undefined;
-  keySwapModeBetweenManualAndVoiceActivity: HotkeyV3 | undefined;
-  keySwapModeBetweenManualAndTap: HotkeyV3 | undefined;
-  keySwapModeBetweenManualAndManualOpenMicToPtt: HotkeyV3 | undefined;
-  keyToggleMuteGlobal: HotkeyV3 | undefined;
+  xKeyGroups: HotkeyGroup[];
+  xKeyPushToMuteGlobal: HotkeyV3 | undefined;
+  xKeySetModeToVoiceActivity: HotkeyV3 | undefined;
+  xKeySetModeToTap: HotkeyV3 | undefined;
+  xKeySetModeToManual: HotkeyV3 | undefined;
+  xKeySetModeToTapOpenMicToPtt: HotkeyV3 | undefined;
+  xKeySetModeToManualOpenMicToPtt: HotkeyV3 | undefined;
+  xKeySwapModeBetweenManualAndVoiceActivity: HotkeyV3 | undefined;
+  xKeySwapModeBetweenManualAndTap: HotkeyV3 | undefined;
+  xKeySwapModeBetweenManualAndManualOpenMicToPtt: HotkeyV3 | undefined;
+  xKeyToggleMuteGlobal: HotkeyV3 | undefined;
   safe: boolean;
   safeIntervalMs: number;
 }
@@ -2306,17 +2306,17 @@ function createBaseProfileSettings(): ProfileSettings {
     afkAutoMuteAfkThresholdMs: 0,
     afkAutoMuteAfkDetectionMethod: 0,
     keys: [],
-    keyGroups: [],
-    keyPushToMuteGlobal: undefined,
-    keySetModeToVoiceActivity: undefined,
-    keySetModeToTap: undefined,
-    keySetModeToManual: undefined,
-    keySetModeToTapOpenMicToPtt: undefined,
-    keySetModeToManualOpenMicToPtt: undefined,
-    keySwapModeBetweenManualAndVoiceActivity: undefined,
-    keySwapModeBetweenManualAndTap: undefined,
-    keySwapModeBetweenManualAndManualOpenMicToPtt: undefined,
-    keyToggleMuteGlobal: undefined,
+    xKeyGroups: [],
+    xKeyPushToMuteGlobal: undefined,
+    xKeySetModeToVoiceActivity: undefined,
+    xKeySetModeToTap: undefined,
+    xKeySetModeToManual: undefined,
+    xKeySetModeToTapOpenMicToPtt: undefined,
+    xKeySetModeToManualOpenMicToPtt: undefined,
+    xKeySwapModeBetweenManualAndVoiceActivity: undefined,
+    xKeySwapModeBetweenManualAndTap: undefined,
+    xKeySwapModeBetweenManualAndManualOpenMicToPtt: undefined,
+    xKeyToggleMuteGlobal: undefined,
     safe: false,
     safeIntervalMs: 0,
   };
@@ -2447,38 +2447,38 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
     for (const v of message.keys) {
       Key.encode(v!, writer.uint32(442).fork()).join();
     }
-    for (const v of message.keyGroups) {
+    for (const v of message.xKeyGroups) {
       HotkeyGroup.encode(v!, writer.uint32(314).fork()).join();
     }
-    if (message.keyPushToMuteGlobal !== undefined) {
-      HotkeyV3.encode(message.keyPushToMuteGlobal, writer.uint32(202).fork()).join();
+    if (message.xKeyPushToMuteGlobal !== undefined) {
+      HotkeyV3.encode(message.xKeyPushToMuteGlobal, writer.uint32(202).fork()).join();
     }
-    if (message.keySetModeToVoiceActivity !== undefined) {
-      HotkeyV3.encode(message.keySetModeToVoiceActivity, writer.uint32(210).fork()).join();
+    if (message.xKeySetModeToVoiceActivity !== undefined) {
+      HotkeyV3.encode(message.xKeySetModeToVoiceActivity, writer.uint32(210).fork()).join();
     }
-    if (message.keySetModeToTap !== undefined) {
-      HotkeyV3.encode(message.keySetModeToTap, writer.uint32(218).fork()).join();
+    if (message.xKeySetModeToTap !== undefined) {
+      HotkeyV3.encode(message.xKeySetModeToTap, writer.uint32(218).fork()).join();
     }
-    if (message.keySetModeToManual !== undefined) {
-      HotkeyV3.encode(message.keySetModeToManual, writer.uint32(226).fork()).join();
+    if (message.xKeySetModeToManual !== undefined) {
+      HotkeyV3.encode(message.xKeySetModeToManual, writer.uint32(226).fork()).join();
     }
-    if (message.keySetModeToTapOpenMicToPtt !== undefined) {
-      HotkeyV3.encode(message.keySetModeToTapOpenMicToPtt, writer.uint32(234).fork()).join();
+    if (message.xKeySetModeToTapOpenMicToPtt !== undefined) {
+      HotkeyV3.encode(message.xKeySetModeToTapOpenMicToPtt, writer.uint32(234).fork()).join();
     }
-    if (message.keySetModeToManualOpenMicToPtt !== undefined) {
-      HotkeyV3.encode(message.keySetModeToManualOpenMicToPtt, writer.uint32(242).fork()).join();
+    if (message.xKeySetModeToManualOpenMicToPtt !== undefined) {
+      HotkeyV3.encode(message.xKeySetModeToManualOpenMicToPtt, writer.uint32(242).fork()).join();
     }
-    if (message.keySwapModeBetweenManualAndVoiceActivity !== undefined) {
-      HotkeyV3.encode(message.keySwapModeBetweenManualAndVoiceActivity, writer.uint32(250).fork()).join();
+    if (message.xKeySwapModeBetweenManualAndVoiceActivity !== undefined) {
+      HotkeyV3.encode(message.xKeySwapModeBetweenManualAndVoiceActivity, writer.uint32(250).fork()).join();
     }
-    if (message.keySwapModeBetweenManualAndTap !== undefined) {
-      HotkeyV3.encode(message.keySwapModeBetweenManualAndTap, writer.uint32(258).fork()).join();
+    if (message.xKeySwapModeBetweenManualAndTap !== undefined) {
+      HotkeyV3.encode(message.xKeySwapModeBetweenManualAndTap, writer.uint32(258).fork()).join();
     }
-    if (message.keySwapModeBetweenManualAndManualOpenMicToPtt !== undefined) {
-      HotkeyV3.encode(message.keySwapModeBetweenManualAndManualOpenMicToPtt, writer.uint32(266).fork()).join();
+    if (message.xKeySwapModeBetweenManualAndManualOpenMicToPtt !== undefined) {
+      HotkeyV3.encode(message.xKeySwapModeBetweenManualAndManualOpenMicToPtt, writer.uint32(266).fork()).join();
     }
-    if (message.keyToggleMuteGlobal !== undefined) {
-      HotkeyV3.encode(message.keyToggleMuteGlobal, writer.uint32(274).fork()).join();
+    if (message.xKeyToggleMuteGlobal !== undefined) {
+      HotkeyV3.encode(message.xKeyToggleMuteGlobal, writer.uint32(274).fork()).join();
     }
     if (message.safe !== false) {
       writer.uint32(32).bool(message.safe);
@@ -2829,7 +2829,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keyGroups.push(HotkeyGroup.decode(reader, reader.uint32()));
+          message.xKeyGroups.push(HotkeyGroup.decode(reader, reader.uint32()));
           continue;
         }
         case 25: {
@@ -2837,7 +2837,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keyPushToMuteGlobal = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeyPushToMuteGlobal = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 26: {
@@ -2845,7 +2845,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySetModeToVoiceActivity = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySetModeToVoiceActivity = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 27: {
@@ -2853,7 +2853,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySetModeToTap = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySetModeToTap = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 28: {
@@ -2861,7 +2861,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySetModeToManual = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySetModeToManual = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 29: {
@@ -2869,7 +2869,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySetModeToTapOpenMicToPtt = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySetModeToTapOpenMicToPtt = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 30: {
@@ -2877,7 +2877,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySetModeToManualOpenMicToPtt = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySetModeToManualOpenMicToPtt = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 31: {
@@ -2885,7 +2885,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySwapModeBetweenManualAndVoiceActivity = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySwapModeBetweenManualAndVoiceActivity = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 32: {
@@ -2893,7 +2893,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySwapModeBetweenManualAndTap = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySwapModeBetweenManualAndTap = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 33: {
@@ -2901,7 +2901,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keySwapModeBetweenManualAndManualOpenMicToPtt = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeySwapModeBetweenManualAndManualOpenMicToPtt = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 34: {
@@ -2909,7 +2909,7 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
             break;
           }
 
-          message.keyToggleMuteGlobal = HotkeyV3.decode(reader, reader.uint32());
+          message.xKeyToggleMuteGlobal = HotkeyV3.decode(reader, reader.uint32());
           continue;
         }
         case 4: {
@@ -3020,34 +3020,36 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
       keys: globalThis.Array.isArray(object?.keys)
         ? object.keys.map((e: any) => Key.fromJSON(e))
         : [],
-      keyGroups: globalThis.Array.isArray(object?.keyGroups)
-        ? object.keyGroups.map((e: any) => HotkeyGroup.fromJSON(e))
+      xKeyGroups: globalThis.Array.isArray(object?.xKeyGroups)
+        ? object.xKeyGroups.map((e: any) => HotkeyGroup.fromJSON(e))
         : [],
-      keyPushToMuteGlobal: isSet(object.keyPushToMuteGlobal)
-        ? HotkeyV3.fromJSON(object.keyPushToMuteGlobal)
+      xKeyPushToMuteGlobal: isSet(object.xKeyPushToMuteGlobal)
+        ? HotkeyV3.fromJSON(object.xKeyPushToMuteGlobal)
         : undefined,
-      keySetModeToVoiceActivity: isSet(object.keySetModeToVoiceActivity)
-        ? HotkeyV3.fromJSON(object.keySetModeToVoiceActivity)
+      xKeySetModeToVoiceActivity: isSet(object.xKeySetModeToVoiceActivity)
+        ? HotkeyV3.fromJSON(object.xKeySetModeToVoiceActivity)
         : undefined,
-      keySetModeToTap: isSet(object.keySetModeToTap) ? HotkeyV3.fromJSON(object.keySetModeToTap) : undefined,
-      keySetModeToManual: isSet(object.keySetModeToManual) ? HotkeyV3.fromJSON(object.keySetModeToManual) : undefined,
-      keySetModeToTapOpenMicToPtt: isSet(object.keySetModeToTapOpenMicToPtt)
-        ? HotkeyV3.fromJSON(object.keySetModeToTapOpenMicToPtt)
+      xKeySetModeToTap: isSet(object.xKeySetModeToTap) ? HotkeyV3.fromJSON(object.xKeySetModeToTap) : undefined,
+      xKeySetModeToManual: isSet(object.xKeySetModeToManual)
+        ? HotkeyV3.fromJSON(object.xKeySetModeToManual)
         : undefined,
-      keySetModeToManualOpenMicToPtt: isSet(object.keySetModeToManualOpenMicToPtt)
-        ? HotkeyV3.fromJSON(object.keySetModeToManualOpenMicToPtt)
+      xKeySetModeToTapOpenMicToPtt: isSet(object.xKeySetModeToTapOpenMicToPtt)
+        ? HotkeyV3.fromJSON(object.xKeySetModeToTapOpenMicToPtt)
         : undefined,
-      keySwapModeBetweenManualAndVoiceActivity: isSet(object.keySwapModeBetweenManualAndVoiceActivity)
-        ? HotkeyV3.fromJSON(object.keySwapModeBetweenManualAndVoiceActivity)
+      xKeySetModeToManualOpenMicToPtt: isSet(object.xKeySetModeToManualOpenMicToPtt)
+        ? HotkeyV3.fromJSON(object.xKeySetModeToManualOpenMicToPtt)
         : undefined,
-      keySwapModeBetweenManualAndTap: isSet(object.keySwapModeBetweenManualAndTap)
-        ? HotkeyV3.fromJSON(object.keySwapModeBetweenManualAndTap)
+      xKeySwapModeBetweenManualAndVoiceActivity: isSet(object.xKeySwapModeBetweenManualAndVoiceActivity)
+        ? HotkeyV3.fromJSON(object.xKeySwapModeBetweenManualAndVoiceActivity)
         : undefined,
-      keySwapModeBetweenManualAndManualOpenMicToPtt: isSet(object.keySwapModeBetweenManualAndManualOpenMicToPtt)
-        ? HotkeyV3.fromJSON(object.keySwapModeBetweenManualAndManualOpenMicToPtt)
+      xKeySwapModeBetweenManualAndTap: isSet(object.xKeySwapModeBetweenManualAndTap)
+        ? HotkeyV3.fromJSON(object.xKeySwapModeBetweenManualAndTap)
         : undefined,
-      keyToggleMuteGlobal: isSet(object.keyToggleMuteGlobal)
-        ? HotkeyV3.fromJSON(object.keyToggleMuteGlobal)
+      xKeySwapModeBetweenManualAndManualOpenMicToPtt: isSet(object.xKeySwapModeBetweenManualAndManualOpenMicToPtt)
+        ? HotkeyV3.fromJSON(object.xKeySwapModeBetweenManualAndManualOpenMicToPtt)
+        : undefined,
+      xKeyToggleMuteGlobal: isSet(object.xKeyToggleMuteGlobal)
+        ? HotkeyV3.fromJSON(object.xKeyToggleMuteGlobal)
         : undefined,
       safe: isSet(object.safe) ? globalThis.Boolean(object.safe) : false,
       safeIntervalMs: isSet(object.safeIntervalMs) ? globalThis.Number(object.safeIntervalMs) : 0,
@@ -3179,40 +3181,42 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
     if (message.keys?.length) {
       obj.keys = message.keys.map((e) => Key.toJSON(e));
     }
-    if (message.keyGroups?.length) {
-      obj.keyGroups = message.keyGroups.map((e) => HotkeyGroup.toJSON(e));
+    if (message.xKeyGroups?.length) {
+      obj.xKeyGroups = message.xKeyGroups.map((e) => HotkeyGroup.toJSON(e));
     }
-    if (message.keyPushToMuteGlobal !== undefined) {
-      obj.keyPushToMuteGlobal = HotkeyV3.toJSON(message.keyPushToMuteGlobal);
+    if (message.xKeyPushToMuteGlobal !== undefined) {
+      obj.xKeyPushToMuteGlobal = HotkeyV3.toJSON(message.xKeyPushToMuteGlobal);
     }
-    if (message.keySetModeToVoiceActivity !== undefined) {
-      obj.keySetModeToVoiceActivity = HotkeyV3.toJSON(message.keySetModeToVoiceActivity);
+    if (message.xKeySetModeToVoiceActivity !== undefined) {
+      obj.xKeySetModeToVoiceActivity = HotkeyV3.toJSON(message.xKeySetModeToVoiceActivity);
     }
-    if (message.keySetModeToTap !== undefined) {
-      obj.keySetModeToTap = HotkeyV3.toJSON(message.keySetModeToTap);
+    if (message.xKeySetModeToTap !== undefined) {
+      obj.xKeySetModeToTap = HotkeyV3.toJSON(message.xKeySetModeToTap);
     }
-    if (message.keySetModeToManual !== undefined) {
-      obj.keySetModeToManual = HotkeyV3.toJSON(message.keySetModeToManual);
+    if (message.xKeySetModeToManual !== undefined) {
+      obj.xKeySetModeToManual = HotkeyV3.toJSON(message.xKeySetModeToManual);
     }
-    if (message.keySetModeToTapOpenMicToPtt !== undefined) {
-      obj.keySetModeToTapOpenMicToPtt = HotkeyV3.toJSON(message.keySetModeToTapOpenMicToPtt);
+    if (message.xKeySetModeToTapOpenMicToPtt !== undefined) {
+      obj.xKeySetModeToTapOpenMicToPtt = HotkeyV3.toJSON(message.xKeySetModeToTapOpenMicToPtt);
     }
-    if (message.keySetModeToManualOpenMicToPtt !== undefined) {
-      obj.keySetModeToManualOpenMicToPtt = HotkeyV3.toJSON(message.keySetModeToManualOpenMicToPtt);
+    if (message.xKeySetModeToManualOpenMicToPtt !== undefined) {
+      obj.xKeySetModeToManualOpenMicToPtt = HotkeyV3.toJSON(message.xKeySetModeToManualOpenMicToPtt);
     }
-    if (message.keySwapModeBetweenManualAndVoiceActivity !== undefined) {
-      obj.keySwapModeBetweenManualAndVoiceActivity = HotkeyV3.toJSON(message.keySwapModeBetweenManualAndVoiceActivity);
-    }
-    if (message.keySwapModeBetweenManualAndTap !== undefined) {
-      obj.keySwapModeBetweenManualAndTap = HotkeyV3.toJSON(message.keySwapModeBetweenManualAndTap);
-    }
-    if (message.keySwapModeBetweenManualAndManualOpenMicToPtt !== undefined) {
-      obj.keySwapModeBetweenManualAndManualOpenMicToPtt = HotkeyV3.toJSON(
-        message.keySwapModeBetweenManualAndManualOpenMicToPtt,
+    if (message.xKeySwapModeBetweenManualAndVoiceActivity !== undefined) {
+      obj.xKeySwapModeBetweenManualAndVoiceActivity = HotkeyV3.toJSON(
+        message.xKeySwapModeBetweenManualAndVoiceActivity,
       );
     }
-    if (message.keyToggleMuteGlobal !== undefined) {
-      obj.keyToggleMuteGlobal = HotkeyV3.toJSON(message.keyToggleMuteGlobal);
+    if (message.xKeySwapModeBetweenManualAndTap !== undefined) {
+      obj.xKeySwapModeBetweenManualAndTap = HotkeyV3.toJSON(message.xKeySwapModeBetweenManualAndTap);
+    }
+    if (message.xKeySwapModeBetweenManualAndManualOpenMicToPtt !== undefined) {
+      obj.xKeySwapModeBetweenManualAndManualOpenMicToPtt = HotkeyV3.toJSON(
+        message.xKeySwapModeBetweenManualAndManualOpenMicToPtt,
+      );
+    }
+    if (message.xKeyToggleMuteGlobal !== undefined) {
+      obj.xKeyToggleMuteGlobal = HotkeyV3.toJSON(message.xKeyToggleMuteGlobal);
     }
     if (message.safe !== false) {
       obj.safe = message.safe;
@@ -3313,44 +3317,44 @@ export const ProfileSettings: MessageFns<ProfileSettings> = {
     message.afkAutoMuteAfkThresholdMs = object.afkAutoMuteAfkThresholdMs ?? 0;
     message.afkAutoMuteAfkDetectionMethod = object.afkAutoMuteAfkDetectionMethod ?? 0;
     message.keys = object.keys?.map((e) => Key.fromPartial(e)) || [];
-    message.keyGroups = object.keyGroups?.map((e) => HotkeyGroup.fromPartial(e)) || [];
-    message.keyPushToMuteGlobal = (object.keyPushToMuteGlobal !== undefined && object.keyPushToMuteGlobal !== null)
-      ? HotkeyV3.fromPartial(object.keyPushToMuteGlobal)
+    message.xKeyGroups = object.xKeyGroups?.map((e) => HotkeyGroup.fromPartial(e)) || [];
+    message.xKeyPushToMuteGlobal = (object.xKeyPushToMuteGlobal !== undefined && object.xKeyPushToMuteGlobal !== null)
+      ? HotkeyV3.fromPartial(object.xKeyPushToMuteGlobal)
       : undefined;
-    message.keySetModeToVoiceActivity =
-      (object.keySetModeToVoiceActivity !== undefined && object.keySetModeToVoiceActivity !== null)
-        ? HotkeyV3.fromPartial(object.keySetModeToVoiceActivity)
+    message.xKeySetModeToVoiceActivity =
+      (object.xKeySetModeToVoiceActivity !== undefined && object.xKeySetModeToVoiceActivity !== null)
+        ? HotkeyV3.fromPartial(object.xKeySetModeToVoiceActivity)
         : undefined;
-    message.keySetModeToTap = (object.keySetModeToTap !== undefined && object.keySetModeToTap !== null)
-      ? HotkeyV3.fromPartial(object.keySetModeToTap)
+    message.xKeySetModeToTap = (object.xKeySetModeToTap !== undefined && object.xKeySetModeToTap !== null)
+      ? HotkeyV3.fromPartial(object.xKeySetModeToTap)
       : undefined;
-    message.keySetModeToManual = (object.keySetModeToManual !== undefined && object.keySetModeToManual !== null)
-      ? HotkeyV3.fromPartial(object.keySetModeToManual)
+    message.xKeySetModeToManual = (object.xKeySetModeToManual !== undefined && object.xKeySetModeToManual !== null)
+      ? HotkeyV3.fromPartial(object.xKeySetModeToManual)
       : undefined;
-    message.keySetModeToTapOpenMicToPtt =
-      (object.keySetModeToTapOpenMicToPtt !== undefined && object.keySetModeToTapOpenMicToPtt !== null)
-        ? HotkeyV3.fromPartial(object.keySetModeToTapOpenMicToPtt)
+    message.xKeySetModeToTapOpenMicToPtt =
+      (object.xKeySetModeToTapOpenMicToPtt !== undefined && object.xKeySetModeToTapOpenMicToPtt !== null)
+        ? HotkeyV3.fromPartial(object.xKeySetModeToTapOpenMicToPtt)
         : undefined;
-    message.keySetModeToManualOpenMicToPtt =
-      (object.keySetModeToManualOpenMicToPtt !== undefined && object.keySetModeToManualOpenMicToPtt !== null)
-        ? HotkeyV3.fromPartial(object.keySetModeToManualOpenMicToPtt)
+    message.xKeySetModeToManualOpenMicToPtt =
+      (object.xKeySetModeToManualOpenMicToPtt !== undefined && object.xKeySetModeToManualOpenMicToPtt !== null)
+        ? HotkeyV3.fromPartial(object.xKeySetModeToManualOpenMicToPtt)
         : undefined;
-    message.keySwapModeBetweenManualAndVoiceActivity =
-      (object.keySwapModeBetweenManualAndVoiceActivity !== undefined &&
-          object.keySwapModeBetweenManualAndVoiceActivity !== null)
-        ? HotkeyV3.fromPartial(object.keySwapModeBetweenManualAndVoiceActivity)
+    message.xKeySwapModeBetweenManualAndVoiceActivity =
+      (object.xKeySwapModeBetweenManualAndVoiceActivity !== undefined &&
+          object.xKeySwapModeBetweenManualAndVoiceActivity !== null)
+        ? HotkeyV3.fromPartial(object.xKeySwapModeBetweenManualAndVoiceActivity)
         : undefined;
-    message.keySwapModeBetweenManualAndTap =
-      (object.keySwapModeBetweenManualAndTap !== undefined && object.keySwapModeBetweenManualAndTap !== null)
-        ? HotkeyV3.fromPartial(object.keySwapModeBetweenManualAndTap)
+    message.xKeySwapModeBetweenManualAndTap =
+      (object.xKeySwapModeBetweenManualAndTap !== undefined && object.xKeySwapModeBetweenManualAndTap !== null)
+        ? HotkeyV3.fromPartial(object.xKeySwapModeBetweenManualAndTap)
         : undefined;
-    message.keySwapModeBetweenManualAndManualOpenMicToPtt =
-      (object.keySwapModeBetweenManualAndManualOpenMicToPtt !== undefined &&
-          object.keySwapModeBetweenManualAndManualOpenMicToPtt !== null)
-        ? HotkeyV3.fromPartial(object.keySwapModeBetweenManualAndManualOpenMicToPtt)
+    message.xKeySwapModeBetweenManualAndManualOpenMicToPtt =
+      (object.xKeySwapModeBetweenManualAndManualOpenMicToPtt !== undefined &&
+          object.xKeySwapModeBetweenManualAndManualOpenMicToPtt !== null)
+        ? HotkeyV3.fromPartial(object.xKeySwapModeBetweenManualAndManualOpenMicToPtt)
         : undefined;
-    message.keyToggleMuteGlobal = (object.keyToggleMuteGlobal !== undefined && object.keyToggleMuteGlobal !== null)
-      ? HotkeyV3.fromPartial(object.keyToggleMuteGlobal)
+    message.xKeyToggleMuteGlobal = (object.xKeyToggleMuteGlobal !== undefined && object.xKeyToggleMuteGlobal !== null)
+      ? HotkeyV3.fromPartial(object.xKeyToggleMuteGlobal)
       : undefined;
     message.safe = object.safe ?? false;
     message.safeIntervalMs = object.safeIntervalMs ?? 0;
