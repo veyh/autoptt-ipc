@@ -817,6 +817,7 @@ export interface IpcSidekickDisconnected {
 }
 
 export interface IpcRequestRestart {
+  asAdmin: boolean;
 }
 
 export interface IpcRequestExit {
@@ -6092,11 +6093,14 @@ export const IpcSidekickDisconnected: MessageFns<IpcSidekickDisconnected> = {
 };
 
 function createBaseIpcRequestRestart(): IpcRequestRestart {
-  return {};
+  return { asAdmin: false };
 }
 
 export const IpcRequestRestart: MessageFns<IpcRequestRestart> = {
-  encode(_: IpcRequestRestart, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(message: IpcRequestRestart, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.asAdmin !== false) {
+      writer.uint32(8).bool(message.asAdmin);
+    }
     return writer;
   },
 
@@ -6107,6 +6111,14 @@ export const IpcRequestRestart: MessageFns<IpcRequestRestart> = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.asAdmin = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -6116,20 +6128,24 @@ export const IpcRequestRestart: MessageFns<IpcRequestRestart> = {
     return message;
   },
 
-  fromJSON(_: any): IpcRequestRestart {
-    return {};
+  fromJSON(object: any): IpcRequestRestart {
+    return { asAdmin: isSet(object.asAdmin) ? globalThis.Boolean(object.asAdmin) : false };
   },
 
-  toJSON(_: IpcRequestRestart): unknown {
+  toJSON(message: IpcRequestRestart): unknown {
     const obj: any = {};
+    if (message.asAdmin !== false) {
+      obj.asAdmin = message.asAdmin;
+    }
     return obj;
   },
 
   create<I extends Exact<DeepPartial<IpcRequestRestart>, I>>(base?: I): IpcRequestRestart {
     return IpcRequestRestart.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<IpcRequestRestart>, I>>(_: I): IpcRequestRestart {
+  fromPartial<I extends Exact<DeepPartial<IpcRequestRestart>, I>>(object: I): IpcRequestRestart {
     const message = createBaseIpcRequestRestart();
+    message.asAdmin = object.asAdmin ?? false;
     return message;
   },
 };
