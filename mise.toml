@@ -2,3 +2,6 @@
 sources = ["autoptt.proto"]
 outputs = ["autoptt.ts"]
 run = "node build.mjs"
+
+[tasks.test]
+run = { task = ":build" }
